@@ -3,7 +3,13 @@ build: build/buddy_bot
 
 build/buddy_bot: vendor $(shell find . -type f -name *.go)
 	mkdir -pv build
-	go build -o build/buddy_bot main.go
+	GOOS=linux GOARCH=amd64 go build -o -i build/buddy_bot main.go
 
 vendor: Gopkg.lock
 	dep ensure
+
+docker/run:
+	docker run buddy-bot:dev
+
+docker/build/img:
+	docker build -t buddy-bot:dev .
