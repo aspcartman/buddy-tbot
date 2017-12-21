@@ -40,13 +40,13 @@ func Run() *bot {
 	return &bot{b}
 }
 
-func (b bot) SendNotification() {
+func (b bot) SendNotification(data string) {
 	ch, err := b.telegram.ChatByID("45944997")
 	if err != nil {
 		e.Throw("Failed getting chat by id", err)
 	}
 
-	_, err = b.telegram.Send(ch, "Hey mate!")
+	_, err = b.telegram.Send(ch, data)
 	if err != nil {
 		e.Throw("Failed sending the notification", err)
 	}

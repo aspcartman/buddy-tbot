@@ -17,8 +17,8 @@ func main() {
 	logrus.Info("Starting")
 	b := bot.Run()
 
-	api.ListenForAPIEvents(func() {
-		b.SendNotification()
+	api.ListenForAPIEvents(func(str string) {
+		b.SendNotification(str)
 	})
 
 	time.Sleep(1 * time.Hour)
