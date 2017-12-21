@@ -8,7 +8,7 @@ import (
 	"github.com/aspcartman/buddy-tbot/e/elogrus"
 	"github.com/sirupsen/logrus"
 )
-// lolds
+
 func main() {
 	logger := logrus.StandardLogger()
 	logger.Formatter = &logrus.TextFormatter{DisableTimestamp: true}
