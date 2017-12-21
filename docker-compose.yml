@@ -1,6 +1,6 @@
 version: "3.0"
 services:
-  buddy-bot:
+  bot:
     image: registry.aspc.me/aspcartman/buddy-bot
     restart: unless-stopped
     labels:
