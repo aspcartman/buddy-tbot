@@ -1,5 +1,9 @@
+build
+vendor
+
 
 # Created by https://www.gitignore.io/api/go,jetbrains
+
 
 ### Go ###
 # Binaries for programs and plugins
