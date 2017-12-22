@@ -15,9 +15,45 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/kardianos/osext"
+  packages = ["."]
+  revision = "ae77be60afb1dcacde03767a8c37337fad28ac14"
+
+[[projects]]
+  name = "github.com/maruel/panicparse"
+  packages = [".","internal","stack"]
+  revision = "766956aceb8ff49664065ae50bef0ae8a0a83ec4"
+  version = "v1.0.2"
+
+[[projects]]
+  name = "github.com/mattn/go-colorable"
+  packages = ["."]
+  revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
+  version = "v0.0.9"
+
+[[projects]]
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
+  version = "v0.0.3"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mgutz/ansi"
+  packages = ["."]
+  revision = "9520e82c474b0a04dd04f8a40959027271bab992"
+
+[[projects]]
+  branch = "master"
   name = "github.com/mitchellh/hashstructure"
   packages = ["."]
   revision = "2bca23e0e452137f789efbc8610126fd8b94f73b"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/mitchellh/panicwrap"
+  packages = ["."]
+  revision = "fce601fe55579125e1b3cb0b992287e7290f7b83"
 
 [[projects]]
   name = "github.com/pkg/errors"
@@ -52,6 +88,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ed47761010f38164a2ca229bb5c706cb8e0af63992461db407fb5aa562b46892"
+  inputs-digest = "416350976cb51be8613a3928b6bc04ce337bfc5a16c76391546ff0c2727dab5c"
   solver-name = "gps-cdcl"
   solver-version = 1

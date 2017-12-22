@@ -32,3 +32,11 @@
 [[constraint]]
   branch = "master"
   name = "github.com/getsentry/raven-go"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/mitchellh/panicwrap"
+
+[[constraint]]
+  name = "github.com/maruel/panicparse"
+  version = "1.0.2"
