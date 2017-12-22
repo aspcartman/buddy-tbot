@@ -27,7 +27,7 @@ type WebHookEvent struct {
 		Status      string `json:"status"`
 	} `json:"project"`
 	CurrentDate time.Time `json:"current_date"`
-	Execution   struct {
+	Execution struct {
 		URL        string    `json:"url"`
 		HTMLURL    string    `json:"html_url"`
 		ID         int       `json:"id"`
@@ -37,7 +37,7 @@ type WebHookEvent struct {
 		Refresh    bool      `json:"refresh"`
 		Status     string    `json:"status"`
 		Comment    string    `json:"comment"`
-		Branch     struct {
+		Branch struct {
 			URL     string `json:"url"`
 			HTMLURL string `json:"html_url"`
 			Name    string `json:"name"`
@@ -49,7 +49,7 @@ type WebHookEvent struct {
 			Revision      string `json:"revision"`
 			ShortRevision string `json:"short_revision"`
 			Message       string `json:"message"`
-			Committer     struct {
+			Committer struct {
 				Name  string      `json:"name"`
 				Title interface{} `json:"title"`
 				Email string      `json:"email"`
@@ -66,7 +66,7 @@ type WebHookEvent struct {
 			Revision      string `json:"revision"`
 			ShortRevision string `json:"short_revision"`
 			Message       string `json:"message"`
-			Committer     struct {
+			Committer struct {
 				Name  string      `json:"name"`
 				Title interface{} `json:"title"`
 				Email string      `json:"email"`
@@ -100,9 +100,9 @@ type WebHookEvent struct {
 			AutoClearCache        bool   `json:"auto_clear_cache"`
 		} `json:"pipeline"`
 		ActionExecutions []struct {
-			Status   string `json:"status"`
-			Progress int    `json:"progress"`
-			Action   struct {
+			Status   string  `json:"status"`
+			Progress float32 `json:"progress"`
+			Action struct {
 				URL                 string `json:"url"`
 				HTMLURL             string `json:"html_url"`
 				ID                  int    `json:"id"`
