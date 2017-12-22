@@ -10,7 +10,7 @@ import (
 
 func main() {
 	b := bot.Run()
-	b.SendMessage("I'm back, boss")
+	b.SendMessage("I'm back, boss. Sorry for that.")
 
 	api.ListenForAPIEvents(func(str string) {
 		b.SendMessage("I have something for you, man!")
