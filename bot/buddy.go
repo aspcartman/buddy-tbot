@@ -26,7 +26,7 @@ func prepareTemplate() *template.Template {
 		return buddyTmpl
 	}
 
-	tmplText, err := ioutil.ReadFile("resources/msg.template")
+	tmplText, err := ioutil.ReadFile("resources/execution.template")
 	if err != nil {
 		e.Throw("failed reading template file", err)
 	}

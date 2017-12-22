@@ -117,4 +117,34 @@ type WebHookEvent struct {
 			LogURL string   `json:"log_url"`
 		} `json:"action_executions"`
 	} `json:"execution"`
+	RepositoryURL string    `json:"repository_url"`
+	Ref           string    `json:"ref"`
+	PushID        int       `json:"push_id"`
+	Operation     string    `json:"operation"`
+	OldHead       string    `json:"old_head"`
+	NewHead       string    `json:"new_head"`
+	CommitsCount  int       `json:"commits_count"`
+	Commits       []struct {
+		URL        string    `json:"url"`
+		HTMLURL    string    `json:"html_url"`
+		Revision   string    `json:"revision"`
+		AuthorDate time.Time `json:"author_date"`
+		CommitDate time.Time `json:"commit_date"`
+		Message    string    `json:"message"`
+		Committer  struct {
+			URL       string      `json:"url"`
+			HTMLURL   string      `json:"html_url"`
+			ID        int         `json:"id"`
+			Name      string      `json:"name"`
+			AvatarURL string      `json:"avatar_url"`
+			Title     interface{} `json:"title"`
+			Email     string      `json:"email"`
+		} `json:"committer"`
+		Author struct {
+			Title interface{} `json:"title"`
+			Email string      `json:"email"`
+		} `json:"author"`
+	} `json:"commits"`
+	PushURL   string `json:"push_url"`
+	BranchURL string `json:"branch_url"`
 }
