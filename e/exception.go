@@ -1,7 +1,5 @@
 package e
 
-import "fmt"
-
 /*
 	Package `e` provides a simple high-level way of error handling that may
 	be used in higher-order packages, where classic go-way error handling turns into
@@ -9,15 +7,10 @@ import "fmt"
  */
 
 type Exception struct {
-	Error       error
-	Description []interface{}
+	Error
 }
 
-func (ex *Exception) Info() string {
-	return fmt.Sprint(ex.Description...)
-}
-
-func Catch(handler func(e *Exception))  {
+func Catch(handler func(e *Exception)) {
 	if r := recover(); r != nil {
 		handle(r, handler)
 	}
@@ -30,18 +23,17 @@ func OnError(handler func(e *Exception)) {
 	}
 }
 
-func Throw(description ... interface{}) {
-	exception := formException(description)
+func Throw(info string, cause error, args ...Map) {
+	exception := &Exception{wrap(info, cause, args...)}
 	ExecHooks(exception)
 	panic(exception)
 }
 
-func Must(err error) {
+func Must(err error, info string, args ...Map) {
 	if err != nil {
-		Throw(err)
+		Throw(info, err, args...)
 	}
 }
-
 
 func handle(r interface{}, handler func(e *Exception)) {
 	var exception *Exception
@@ -49,28 +41,12 @@ func handle(r interface{}, handler func(e *Exception)) {
 	case *Exception:
 		exception = e
 	case error:
-		exception = &Exception{e, nil}
+		exception = &Exception{wrap("third party exception", e)}
 	default:
-		exception = &Exception{nil, []interface{}{e}}
+		exception = &Exception{wrap("third party exception", nil, Map{
+			"recovered": e,
+		})}
 	}
 
 	handler(exception)
-}
-
-func formException(description []interface{}) *Exception {
-	if len(description) == 0 {
-		return &Exception{nil, []interface{}{"unknown reason"}}
-	}
-
-	// find the first err
-	var err error
-	for i, r := range description {
-		if re, ok := r.(error); ok {
-			err = re
-			description = description[:i+copy(description[i:], description[i+1:])] // delete err from exception description
-			break
-		}
-	}
-
-	return &Exception{err, description}
 }

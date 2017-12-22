@@ -10,7 +10,7 @@ var hooks []func(ex *Exception)
  */
 
 //go:norace
-func RegisterPostHook(f func(ex *Exception)) {
+func RegisterHook(f func(ex *Exception)) {
 	hooks = append(hooks, f)
 }
 

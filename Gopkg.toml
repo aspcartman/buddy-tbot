@@ -28,3 +28,7 @@
 [[constraint]]
   branch = "v2"
   name = "gopkg.in/tucnak/telebot.v2"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/getsentry/raven-go"

@@ -5,16 +5,10 @@ import (
 
 	"github.com/aspcartman/buddy-tbot/api"
 	"github.com/aspcartman/buddy-tbot/bot"
-	"github.com/aspcartman/buddy-tbot/e/elogrus"
-	"github.com/sirupsen/logrus"
+	_ "github.com/aspcartman/buddy-tbot/env"
 )
 
 func main() {
-	logger := logrus.StandardLogger()
-	logger.Formatter = &logrus.TextFormatter{DisableTimestamp: true}
-	elogrus.AddLogger(logger)
-
-	logrus.Info("Starting")
 	b := bot.Run()
 
 	api.ListenForAPIEvents(func(str string) {

@@ -11,7 +11,9 @@ func ListenForAPIEvents(clb func(payload string)) {
 	srv := http.Server{}
 	srv.Handler = handler{clb}
 	srv.Addr = "0.0.0.0:8080"
-	go e.Must(srv.ListenAndServe())
+	go e.Must(srv.ListenAndServe(), "failed listening and serving", e.Map{
+		"addr": srv.Addr,
+	})
 }
 
 type handler struct {

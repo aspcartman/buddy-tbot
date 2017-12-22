@@ -2,6 +2,18 @@
 
 
 [[projects]]
+  name = "github.com/certifi/gocertifi"
+  packages = ["."]
+  revision = "a4ab0227d360091084658029ec8ae45f989fba3e"
+  version = "2017.11.05"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/getsentry/raven-go"
+  packages = ["."]
+  revision = "32a13797442ccb601b11761d74232773c1402d14"
+
+[[projects]]
   branch = "master"
   name = "github.com/mitchellh/hashstructure"
   packages = ["."]
@@ -40,6 +52,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5bb1b73a605564b5a91981b2a54b321af0581cc84872e223d9b86860ed3d25ae"
+  inputs-digest = "ed47761010f38164a2ca229bb5c706cb8e0af63992461db407fb5aa562b46892"
   solver-name = "gps-cdcl"
   solver-version = 1
