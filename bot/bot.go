@@ -15,49 +15,57 @@ func init() {
 	logger = env.Log
 }
 
-type TelegramNotificator interface {
-	SendNotification()
+type Bot struct {
+	tg *telebot.Bot
 }
 
-type bot struct {
-	telegram *telebot.Bot
-}
+func Run() *Bot {
+	logger.Info("Starting telegram Bot")
 
-func Run() *bot {
-	logger.Info("Starting telegram bot")
-
-	b, err := telebot.NewBot(telebot.Settings{
+	telegramBot, err := telebot.NewBot(telebot.Settings{
 		Token:  "487229393:AAEWArHxDgx2tRaQmUJu7qLNRl4hRobPdsI",
 		Poller: &telebot.LongPoller{Timeout: 10 * time.Second},
 	})
-
 	if err != nil {
-		e.Throw("Failed to authorize bot a instance", err)
+		e.Throw("Failed to authorize Bot a instance", err)
 	}
 
-	b.Handle("/start", func(m *telebot.Message) {
-		logger.Info("Here comes the owner", m.Sender, m.Chat.ID)
-		b.Send(m.Sender, "hello world")
-	})
+	bot := &Bot{telegramBot}
+	telegramBot.Handle(telebot.OnText, bot.handleMessage)
 
-	go func() {
-		logger.Info("Running the bot runloop")
-		b.Start()
-	}()
+	go bot.runloop()
 
-	return &bot{b}
+	return &Bot{telegramBot}
 }
 
-func (b bot) SendNotification(data string) {
+func (b *Bot) runloop() {
+	defer e.Catch(func(e *e.Exception) {
+		logger.Error("Telegram Bot runloop panic")
+		go b.runloop()
+	})
+
+	b.tg.Start()
+}
+
+func (b Bot) handleMessage(m *telebot.Message) {
+	logger.Info("Here comes the owner", m.Sender, m.Chat.ID)
+	b.tg.Send(m.Sender, "hello world")
+}
+
+func (b Bot) SendNotification(data string) {
 	logger.WithField("length", len(data)).Info("Sending notification")
-	ch, err := b.telegram.ChatByID("45944997")
+	b.SendMessage(data)
+	logger.Info("Sent notification")
+}
+
+func (b Bot) SendMessage(msg string) {
+	ch, err := b.tg.ChatByID("45944997")
 	if err != nil {
 		e.Throw("Failed getting chat by id", err)
 	}
 
-	_, err = b.telegram.Send(ch, data)
+	_, err = b.tg.Send(ch, msg)
 	if err != nil {
-		e.Throw("Failed sending the notification", err)
+		e.Throw("Failed sending message", err)
 	}
-	logger.Info("Sent notification")
 }
