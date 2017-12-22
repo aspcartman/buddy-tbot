@@ -9,6 +9,7 @@ services:
       traefik.frontend.rule: Host:buddy-bot.aspc.me
       traefik.port: '8080'
       traefik.docker.network: traefik_default
+    hostname: anvil
     networks:
       - traefik_default
 

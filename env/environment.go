@@ -25,7 +25,6 @@ func init() {
 	//
 	raven.SetDSN("https://0e4779deb4be44cc9400e800ff0486bb:84b84a0654644c918956b8f01dc14e83@sentry.aspc.me/3")
 	panicwrap.BasicWrap(func(panicInfo string) {
-		// I can panic
 		//dumpInfo, err := stack.ParseDump(strings.NewReader(panicInfo), ioutil.Discard)
 		//NewPacket(rvalStr, append(append(interfaces, client.context.interfaces()...), NewException(errors.New(rvalStr), NewStacktrace(2, 3, client.includePaths)))...)
 		raven.CaptureMessage("I have paniced!", nil)
