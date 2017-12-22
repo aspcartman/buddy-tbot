@@ -87,3 +87,8 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/go,jetbrains
+.idea/buddy-tbot.iml
+#.idea/go.imports.xml
+.idea/inspectionProfiles/
+.idea/modules.xml
+.idea/vcs.xml

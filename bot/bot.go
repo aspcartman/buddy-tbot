@@ -64,7 +64,7 @@ func (b Bot) SendMessage(msg string) {
 		e.Throw("Failed getting chat by id", err)
 	}
 
-	_, err = b.tg.Send(ch, msg)
+	_, err = b.tg.Send(ch, msg, telebot.ModeMarkdown)
 	if err != nil {
 		e.Throw("Failed sending message", err)
 	}

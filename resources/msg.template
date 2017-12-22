@@ -1,0 +1,4 @@
+*Buddy Execution*
+*Project:* [{{.Project.DisplayName}}]({{.Project.HTMLURL}}) _{{.Project.Status}}_
+*Invoker:* [{{.Invoker.Name}}]({{.Invoker.HTMLURL}}) _{{.Invoker.Email}}_
+
