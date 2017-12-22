@@ -16,9 +16,12 @@ func (b *Bot) HandleBuddyEvent(event *buddy.WebHookEvent) {
 }
 
 func buildUpATGMessage(event *buddy.WebHookEvent) string {
-	buf := &bytes.Buffer{}
-	e.Must(prepareTemplate().Execute(buf, event), "failed executing the message template")
-	return buf.String()
+	if event.Execution.ID != 0 {
+		buf := &bytes.Buffer{}
+		e.Must(prepareTemplate().Execute(buf, event), "failed executing the message template")
+		return buf.String()
+	}
+	return "detected push"
 }
 
 func prepareTemplate() *template.Template {
