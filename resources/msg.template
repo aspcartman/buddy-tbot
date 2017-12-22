@@ -1,4 +1,12 @@
-*Buddy Execution*
-*Project:* [{{.Project.DisplayName}}]({{.Project.HTMLURL}}) _{{.Project.Status}}_
-*Invoker:* [{{.Invoker.Name}}]({{.Invoker.HTMLURL}}) _{{.Invoker.Email}}_
+*Execution* [{{.Execution.ID}}]({{.Execution.HTMLURL}}) on *{{.Workspace.Domain}}*
+*Status:* {{.Execution.Status}}
+*Project:* [{{.Project.DisplayName}}]({{.Project.HTMLURL}})
+*Invoker:* [{{.Invoker.Name}}]({{.Invoker.HTMLURL}})
+*Comment:* {{.Execution.Comment}}
+*From* [{{.Execution.FromRevision.ShortRevision}}]({{.Execution.FromRevision.HTMLURL}}) *to* [{{.Execution.ToRevision.ShortRevision}}]({{.Execution.ToRevision.HTMLURL}}) *on* [{{.Execution.Branch.Name}}]({{.Execution.Branch.HTMLURL}})
+{{.Execution.ToRevision.Message}}
 
+*Pipeline*: [{{.Execution.Pipeline.Name}}]({{.Execution.Pipeline.HTMLURL}})
+{{range $value := .Execution.ActionExecutions}}- *{{$value.Action.Name}}* [log]({{$value.LogURL}}) [edit]({{$value.Action.HTMLURL}})
+   {{$value.Status}} {{$value.Progress}}
+{{end}}
