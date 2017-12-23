@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"io"
 	"time"
 
 	"github.com/aspcartman/buddy-tbot/e"
@@ -35,6 +36,7 @@ func Run() *Bot {
 
 	go bot.runloop()
 
+	e.Throw("Testing sentry on deployment", io.ErrNoProgress)
 	return &Bot{telegramBot}
 }
 

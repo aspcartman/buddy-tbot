@@ -23,7 +23,6 @@ type Backend interface {
 
 func ListenForAPIEvents(backend Backend) {
 	logger.Info("starting to listen for http events")
-
 	srv := http.Server{}
 	srv.Handler = handler{backend}
 	srv.Addr = "0.0.0.0:8080"

@@ -7,7 +7,11 @@ package e
  */
 
 type Exception struct {
-	Error
+	SmartError
+}
+
+func (e Exception) Error() string {
+	return e.SmartError.Error()
 }
 
 func Catch(handler func(e *Exception)) {
@@ -34,7 +38,6 @@ func Must(err error, info string, args ...Map) {
 		Throw(info, err, args...)
 	}
 }
-
 
 func handle(r interface{}, handler func(e *Exception)) {
 	var exception *Exception

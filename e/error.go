@@ -1,31 +1,38 @@
 package e
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Map map[string]interface{}
 
-type Error struct {
+type SmartError struct {
 	Info  string
 	Cause error
 	Args  Map
 }
 
+func (e SmartError) Error() string {
+	return fmt.Sprintf("%s (%s)", e.Info, e.Cause)
+}
 
-
-func (e Error) Error() string {
-	//format := "WRONG ERROR FORMAT"
-	//haveCause := e.cause != nil
-	//haveInfo := len(e.info) > 0
-	//haveArgs := len(e.args) > 0
-
-	return fmt.Sprint(e)
+func (e SmartError) BottommostError() error {
+	var err error = e
+	for {
+		if se, ok := err.(SmartError); ok {
+			err = se.Cause
+		} else {
+			break
+		}
+	}
+	return err
 }
 
 func WrapError(info string, cause error, args ...Map) error {
 	return wrap(info, cause, args...)
 }
 
-func wrap(info string, cause error, args ...Map) Error {
+func wrap(info string, cause error, args ...Map) SmartError {
 	var argsMap Map
 	switch len(args) {
 	case 0:
@@ -40,7 +47,7 @@ func wrap(info string, cause error, args ...Map) Error {
 			}
 		}
 	}
-	return Error{info, cause, argsMap}
+	return SmartError{info, cause, argsMap}
 }
 
 func Is(err1, err2 error) bool {
@@ -48,7 +55,7 @@ func Is(err1, err2 error) bool {
 		return true
 	}
 
-	e, ok := err1.(Error)
+	e, ok := err1.(SmartError)
 	if ok {
 		return Is(e.Cause, err2)
 	}
