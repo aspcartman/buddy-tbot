@@ -8,6 +8,18 @@
   revision = "8f1d6941cd755b975763ddb1f836561edddac2b8"
 
 [[projects]]
+  name = "github.com/aspcartman/darkside"
+  packages = [".","g"]
+  revision = "c274dda6179456a83c147cd7c2edeaeec7255f29"
+  version = "v1.9"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/aspcartman/exceptions"
+  packages = ["."]
+  revision = "612f260adbc2d72e0a1b95f13113a7dfe1dc9eeb"
+
+[[projects]]
   branch = "master"
   name = "github.com/bouk/monkey"
   packages = ["."]
@@ -64,6 +76,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f242665698176ce1c6db59498f6863f88f367b3e9793438862d80dbf8905364b"
+  inputs-digest = "75e7f8881accc24d21b36f1deae82ba4564b3ecc18530235a89db8f681c5b393"
   solver-name = "gps-cdcl"
   solver-version = 1

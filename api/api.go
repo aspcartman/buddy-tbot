@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"github.com/aspcartman/buddy-tbot/api/buddy"
-	"github.com/aspcartman/buddy-tbot/e"
 	"github.com/aspcartman/buddy-tbot/env"
+	"github.com/aspcartman/exceptions"
 	"github.com/sirupsen/logrus"
 )
 

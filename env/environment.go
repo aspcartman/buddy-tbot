@@ -3,8 +3,9 @@ package env
 import (
 	"fmt"
 
-	"github.com/aspcartman/buddy-tbot/e"
-	"github.com/aspcartman/buddy-tbot/env/darkside"
+	"github.com/aspcartman/darkside"
+	"github.com/aspcartman/darkside/g"
+	"github.com/aspcartman/exceptions"
 	"github.com/getsentry/raven-go"
 	"github.com/sirupsen/logrus"
 )
@@ -20,7 +21,7 @@ func init() {
 func setupPanicSafenet() {
 	raven.SetDSN("https://0e4779deb4be44cc9400e800ff0486bb:84b84a0654644c918956b8f01dc14e83@sentry.aspc.me/3")
 
-	darkside.SetUnrecoveredPanicHandler(func(p *darkside.Panic) {
+	darkside.SetUnrecoveredPanicHandler(func(p *g.Panic) {
 		var title string
 		var reason string
 		var message string
@@ -45,6 +46,7 @@ func setupPanicSafenet() {
 			Value:      reason,
 			Stacktrace: trace,
 		}
+
 		packet := raven.NewPacket(message, &exc)
 		raven.Capture(packet, nil)
 		raven.Wait()

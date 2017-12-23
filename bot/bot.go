@@ -3,8 +3,8 @@ package bot
 import (
 	"time"
 
-	"github.com/aspcartman/buddy-tbot/e"
 	"github.com/aspcartman/buddy-tbot/env"
+	"github.com/aspcartman/exceptions"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/tucnak/telebot.v2"
 )

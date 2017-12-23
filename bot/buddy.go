@@ -6,7 +6,7 @@ import (
 	"text/template"
 
 	"github.com/aspcartman/buddy-tbot/api/buddy"
-	"github.com/aspcartman/buddy-tbot/e"
+	"github.com/aspcartman/exceptions"
 )
 
 var buddyTmpl *template.Template
