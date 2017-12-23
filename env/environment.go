@@ -14,6 +14,7 @@ var Log logrus.FieldLogger
 func init() {
 	setupPanicSafenet()
 	setupLogging()
+	//setupGoroutineLocal()
 }
 
 func setupPanicSafenet() {
