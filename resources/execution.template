@@ -1,4 +1,4 @@
-*Execution* [{{.Execution.ID}}]({{.Execution.HTMLURL}}) on *{{.Workspace.Domain}}*
+*Execution* [{{.Execution.ID}}]({{.Execution.HTMLURL}}) of [{{.Execution.Pipeline.Name}}]({{.Execution.Pipeline.HTMLURL}}) on *{{.Workspace.Domain}}*
 *Status:* {{.Execution.Status}}
 *Project:* [{{.Project.DisplayName}}]({{.Project.HTMLURL}})
 *Invoker:* [{{.Invoker.Name}}]({{.Invoker.HTMLURL}})
